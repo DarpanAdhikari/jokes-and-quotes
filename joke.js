@@ -24,27 +24,43 @@ fetch('https://quotable.io/random')
     document.querySelector(".card-head").textContent = "😊"
   });
 }
+ function getFacts() {
+        const options = {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': 'db37ac66cemshc981eefb466e4d9p1d0daejsn54d414dff1d9',
+            'X-RapidAPI-Host': 'numbersapi.p.rapidapi.com'
+          }
+        };
+        fetch('https://numbersapi.p.rapidapi.com/6/21/date?fragment=true&json=true', options)
+          .then(response => response.json())
+          .then(response => {
+            category.textContent = "Facts"
+            jokeHolder.textContent = response.text
+            document.querySelector(".author").textContent = ""
+            document.querySelector(".card-head").textContent = "😯"
+          })
+      }
+
 window.onload = () => {
-getCategory = localStorage.getItem("category")
-if (getCategory === "jokes") { 
-  getJokes();
-  jokes.style.background = "#fff";
-}
-else { getQuotes();
-  Quote.style.background = "#fff"; }
-}
-changeBtn.onclick = () => {
-getCategory = localStorage.getItem("category")
-if (getCategory === "jokes") { getJokes(); }
-else { getQuotes(); }
-}
-function checkStatus() {
-if (checkbox[0].checked) {
-  getJokes();
-} else {
-  getQuotes();
-}
-}
+      getCategory = localStorage.getItem("category")
+      if (getCategory === "jokes") { 
+        getJokes();
+        jokes.style.background = "#fff";
+      }
+      else if(getCategory === "quotes"){ getQuotes();
+        Quote.style.background = "#fff"; }
+        else{
+         getFacts(); 
+         factThing.style.background = "#fff";}
+       }
+       
+  changeBtn.onclick = () => {
+      getCategory = localStorage.getItem("category")
+      if (getCategory === "jokes") { getJokes(); }
+      else if(getCategory === "quotes") { getQuotes(); }else {getFacts();}
+    }
+
 
 copyBtn.onclick = () => {
 navigator.clipboard.writeText(jokeHolder.textContent);
@@ -52,6 +68,7 @@ navigator.clipboard.writeText(jokeHolder.textContent);
 jokes.onclick = () => {
 checkCategory = localStorage.setItem("category", "jokes");
 jokes.style.background = "#fff";
+factThing.style.background = "";
 Quote.style.background = "";
 getJokes();
 }
@@ -59,8 +76,18 @@ Quote.onclick = () => {
 checkCategory = localStorage.setItem("category", "quotes");
 jokes.style.background = "";
 Quote.style.background = "#fff";
+factThing.style.background = "";
 getQuotes();
 }
+const factThing = document.querySelector(".facts");
+factThing.onclick=()=>{
+  checkCategory = localStorage.setItem("category", "facts");
+   jokes.style.background = "";
+   Quote.style.background = "";
+   factThing.style.background = "#fff";
+      getFacts();
+}
+
 var getCategory;
 const speech = document.querySelector(".speaking");
 speech.onclick = () => {

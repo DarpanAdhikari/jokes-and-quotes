@@ -73,3 +73,9 @@ if (!speechSynthesis.speaking) {
 }
 const facebook = document.querySelector(".facebook");
 facebook.href = `http://www.facebook.com/share.php?u=${window.location}`;
+
+document.onkeyup=(e)=>{
+      if(e.keyCode = "39"){
+         changeBtn.click();
+      }
+    }

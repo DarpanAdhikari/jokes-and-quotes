@@ -79,3 +79,21 @@ document.onkeyup=(e)=>{
          changeBtn.click();
       }
     }
+
+
+window.addEventListener("offline",()=>{
+     setTimeout(()=>{
+      document.querySelector(".bottom-network-check").classList.remove("active");
+     },5000)
+     document.querySelector(".bottom-network-check").classList.add("active");
+     document.querySelector(".bottom-network-check").textContent = "you are offline!!😥";
+     document.querySelector(".bottom-network-check").style.background ="red";
+  });
+  window.addEventListener("online",()=>{
+    setTimeout(()=>{
+      document.querySelector(".bottom-network-check").classList.remove("active");
+     },5000)
+     document.querySelector(".bottom-network-check").classList.add("active");
+     document.querySelector(".bottom-network-check").textContent = "Back to online🥰";
+     document.querySelector(".bottom-network-check").style.background ="green";
+  });

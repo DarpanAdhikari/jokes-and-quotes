@@ -120,7 +120,7 @@ transition: all .5s ease;
 .category span:hover{
 background: #fff;
 }
-.category .Quote{
+.category .Quote,.facts{
 margin-left: 10px;
 }
 .category p{

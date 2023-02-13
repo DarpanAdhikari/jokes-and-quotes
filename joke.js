@@ -43,13 +43,13 @@ fetch('https://quotable.io/random')
       }
 
 window.onload = () => {
-      getCategory = localStorage.getItem("category")
+      getCategory = localStorage.getItem("category");
       if (getCategory === "jokes") { 
         getJokes();
         jokes.style.background = "#fff";
       }
-      else if(getCategory === "quotes"){ getQuotes();
-        Quote.style.background = "#fff"; }
+      else if(getCategory === "quotes") { getQuotes();
+        Quote.style.background = "#FFFFFF"; }
         else{
          getFacts(); 
          factThing.style.background = "#fff";}
